@@ -1,0 +1,17 @@
+.user__info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.user__info p {
+    margin: 10px 0;
+}
+.user__cta {
+    margin: 20px 0;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 2px rgba(181, 181, 181, 0.5);
+}

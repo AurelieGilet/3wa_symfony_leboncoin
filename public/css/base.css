@@ -151,17 +151,20 @@ main {
 
 h1 {
     font-size: 30px;
+    font-weight: bold;
     text-align: center;
     margin: 20px 0;
 }
 
 h2 {
     font-size: 25px;
+    font-weight: 600;
     margin: 15px 0;
 }
 
 h3 {
     font-size: 22px;
+    font-weight: 600;
     margin: 10px 0;
 }
 

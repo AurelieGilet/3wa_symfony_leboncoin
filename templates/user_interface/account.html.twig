@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/user_interface/user_interface.css') }}">
+{% endblock %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Mon Compte</h1>
+    <div class="user__info">
+        <h2>Mes infos perso</h2>
+        <p>Pseudo : {{ app.user.alias }}</p>
+        <p>Email : {{ app.user.email }}</p>
+        <p>Mot de passe : **********</p>
+        <a href="" class="user__cta">Modifier mes infos</a>
+    </div>
+    <div class="user__info">
+        <h2>Mes adresses</h2>
+        <a href="" class="user__cta">Ajouter une adresse</a>
+
+        {% if user.addresses|length > 0 %}
+            {% for address in user.addresses %}
+                <div>
+                    <p>{{ address.street}}</p>
+                    <p>{{ address.zip }} {{ address.city }}</p>
+                    <a href="" class="user__cta">Modifier cette adresse</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Vous n'avez pas encore enregistré d'adresse</p>
+        {% endif %}
+        
+    </div>
+</main>
+{% endblock %}

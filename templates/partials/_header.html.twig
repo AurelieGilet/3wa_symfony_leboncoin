@@ -3,7 +3,7 @@
     <nav class="nav__user-menu">
         {% if is_granted("ROLE_USER") %}
             <ul>
-                <li><a href="">Mon Compte</a></li>
+                <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
                 <li><a href="">Mes Annonces</a></li>
                 <li><a href="">Mon Portefeuille</a></li>
             </ul>

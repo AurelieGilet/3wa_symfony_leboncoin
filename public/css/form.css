@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    justify-content: center;
+}
+.form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form form div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.form form input,
+.form form select,
+.form form button {
+    padding: 5px;
+}

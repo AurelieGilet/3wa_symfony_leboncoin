@@ -1,0 +1,22 @@
+<header>
+    <a class="link-back" href="{{ path('home') }}">LeBonCoin</a>
+    <nav class="nav__user-menu">
+        {% if is_granted("ROLE_USER") %}
+            <ul>
+                <li><a href="">Mon Compte</a></li>
+                <li><a href="">Mes Annonces</a></li>
+                <li><a href="">Mon Portefeuille</a></li>
+            </ul>
+        {% endif %}
+    </nav>
+    <nav class="nav__cta">
+        <ul>
+            {% if is_granted("ROLE_USER") %}
+                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('register') }}">Inscription</a></li>
+                <li><a href="{{ path('login') }}">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>     

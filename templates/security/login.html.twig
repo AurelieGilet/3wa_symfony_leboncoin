@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Connexion</h1>
+
+    {% for label, messages in app.flashes(["error", "success"]) %}
+        {% for message in messages %}
+            <span class="flash-content {{label}}-content">
+                {{message}}
+            </span>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="form">
+        <form action="{{ path('login') }}" method="post">
+            <div>
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </div>
+    
+            <div>
+                <label for="password">Mot de Passe:</label>
+                <input type="password" id="password" name="_password" />
+            </div>
+    
+            {# Contrôle de la redirection (facultatif si défini dans security.yaml ) #}
+            {# <input type="hidden" name="_target_path" value="/" />  #}
+            {# Jeton de sécurité CSRF #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+    
+            <div>
+                <button type="submit">Connexion</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

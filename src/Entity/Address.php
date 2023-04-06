@@ -17,10 +17,10 @@ class Address
     private ?string $street = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $city = null;
+    private ?string $zip = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $zip = null;
+    private ?string $city = null;
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
@@ -43,18 +43,6 @@ class Address
         return $this;
     }
 
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
     public function getZip(): ?string
     {
         return $this->zip;
@@ -63,6 +51,18 @@ class Address
     public function setZip(string $zip): self
     {
         $this->zip = $zip;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

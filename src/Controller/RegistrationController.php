@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Wallet;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +22,7 @@ class RegistrationController extends AbstractController
     ): Response
     {
         $user = new User();
+        $wallet = new Wallet();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
@@ -35,7 +37,12 @@ class RegistrationController extends AbstractController
 
             $user->setRoles(['ROLE_USER']);
 
+            $wallet->setUser($user);
+            $wallet->setAmount(100);
+
             $em->persist($user);
+            $em->persist($wallet);
+
             $em->flush();
             // do anything else you need here, like send an email
 

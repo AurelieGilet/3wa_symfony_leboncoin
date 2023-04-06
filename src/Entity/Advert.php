@@ -29,7 +29,6 @@ class Advert
     private ?bool $isVisible = null;
 
     #[ORM\ManyToOne(inversedBy: 'adverts')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'advert', targetEntity: Comment::class, orphanRemoval: true)]

@@ -22,7 +22,6 @@ class Purchase
     private ?User $user = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Address $address = null;
 
     public function getId(): ?int

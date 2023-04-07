@@ -21,11 +21,13 @@
     margin-right: 20px;
 }
 
-.advert__container {
+.advert__container,
+.purchase__container {
     display: flex;
     flex-direction: column;
 }
 
-.advert__card {
+.advert__card,
+.puchase__card {
     margin-bottom: 20px;
 }

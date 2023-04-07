@@ -63,6 +63,20 @@ class UserInterfaceController extends AbstractController
     }
 
     /**
+     * @return Response
+     */
+    #[Route('/compte/achats', name: 'user_purchases')]
+    public function userPurchases(): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('user_interface/purchases.html.twig', [
+            'controller_name' => 'UserInterfaceController',
+            'user' => $user,
+        ]);
+    }
+
+    /**
      * @param Request $request
      * 
      * @return Response

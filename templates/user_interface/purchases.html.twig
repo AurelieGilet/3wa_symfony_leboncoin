@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/user_interface/user_interface.css') }}">
+{% endblock %}
+
+{% block title %}Mes achats{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Mes achats</h1>
+
+    {% for label, messages in app.flashes(["error", "success"]) %}
+        {% for message in messages %}
+            <span class="flash-content {{label}}-content">
+                {{message}}
+            </span>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="user__info">
+        {% if user.purchases|length > 0 %}
+            <div class="purchase__container">
+                {% for purchase in user.purchases %}
+                    <div class="purchase__card">
+                        <h3>{{ purchase.advert.title}}</h3>
+                        <p>Vendeur : {{ purchase.advert.user.name }}</p>
+                        <p>Prix : {{ purchase.advert.price }} €</p>
+                        <p>Adresse d'expédition : 
+                            {{purchase.address.street}}, 
+                            {{ purchase.address.zip }} {{ purchase.address.city }} 
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Vous n'avez encore fait aucun achat</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

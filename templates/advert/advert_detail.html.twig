@@ -14,7 +14,7 @@
         <p>Vendu par <em>{{ advert.user.alias }}</em></p>
         <p>{{ advert.description|nl2br }}</p>
         <p>Prix : {{ advert.price }} €</p>
-        <a href="" 
+        <a href="{{ path('advert_purchase', {'id'}: advert.id) }}" 
             class="button advert__cta">
             Acheter
         </a>

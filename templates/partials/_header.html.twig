@@ -5,17 +5,17 @@
             <ul>
                 <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
                 <li><a href="">Mes Annonces</a></li>
-                <li><a href="">Mon Portefeuille</a></li>
+                <li><a href="">Mes Achats</a></li>
             </ul>
         {% endif %}
     </nav>
     <nav class="nav__cta">
         <ul>
             {% if is_granted("ROLE_USER") %}
-                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                <li><a href="{{ path('logout') }}" class="button">Déconnexion</a></li>
             {% else %}
-                <li><a href="{{ path('register') }}">Inscription</a></li>
-                <li><a href="{{ path('login') }}">Connexion</a></li>
+                <li><a href="{{ path('register') }}" class="button">Inscription</a></li>
+                <li><a href="{{ path('login') }}" class="button">Connexion</a></li>
             {% endif %}
         </ul>
     </nav>

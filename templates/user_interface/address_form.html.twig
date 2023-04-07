@@ -7,21 +7,24 @@
 {% set current_path = app.request.get('_route') %}
 
 {% block title %}
-    {% if current_path is same as 'register' %}
-        Inscription 
+    {% if current_path is same as 'address_add' %}
+        Ajouter 
     {% else %}
-        Modifier mes infos 
+        Modifier 
     {% endif %}
+        une addresse
 {% endblock %}
 
 {% block body %}
 <main>
+    <a href="{{ path('user_account') }}" class="link-back">Retour au compte</a>
     <h1>
-    {% if current_path is same as 'register' %}
-        Inscription 
-    {% else %}
-        Modifier mes infos
-    {% endif %}
+        {% if current_path is same as 'address_add' %}
+            Ajouter 
+        {% else %}
+            Modifier 
+        {% endif %}
+            une addresse
     </h1>
     <div class="form">
         {{ form(form) }}

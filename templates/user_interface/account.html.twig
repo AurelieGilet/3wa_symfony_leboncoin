@@ -9,29 +9,49 @@
 {% block body %}
 <main>
     <h1>Mon Compte</h1>
+
+    {% for label, messages in app.flashes(["error", "success"]) %}
+        {% for message in messages %}
+            <span class="flash-content {{label}}-content">
+                {{message}}
+            </span>
+        {% endfor %}
+    {% endfor %}
+
     <div class="user__info">
         <h2>Mes infos perso</h2>
+        <a href="{{ path('update_user') }}" class="button user__cta">Modifier mes infos</a>
         <p>Pseudo : {{ app.user.alias }}</p>
         <p>Email : {{ app.user.email }}</p>
         <p>Mot de passe : **********</p>
-        <a href="" class="user__cta">Modifier mes infos</a>
     </div>
+
     <div class="user__info">
         <h2>Mes adresses</h2>
-        <a href="" class="user__cta">Ajouter une adresse</a>
+        <a href="{{ path('add_address') }}" class="button user__cta">Ajouter une adresse</a>
 
         {% if user.addresses|length > 0 %}
-            {% for address in user.addresses %}
-                <div>
-                    <p>{{ address.street}}</p>
-                    <p>{{ address.zip }} {{ address.city }}</p>
-                    <a href="" class="user__cta">Modifier cette adresse</a>
-                </div>
-            {% endfor %}
+            <div class="info__container">
+                {% for address in user.addresses %}
+                    <div class="info__card">
+                        <p>{{ address.street}}</p>
+                        <p>{{ address.zip }} {{ address.city }}</p>
+                        <a href="{{ path('update_address', {'id': address.id}) }}" 
+                            class="button user__cta">
+                            Modifier cette adresse
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         {% else %}
             <p>Vous n'avez pas encore enregistré d'adresse</p>
         {% endif %}
-        
+    </div>
+
+    <div class="user__info">
+        <h2>Mon Portefeuille</h2>
+        <a href="{{ path('update_wallet', {'id': user.wallet.id}) }}" class="button user__cta">Ajouter du crédit</a>
+        <p>Solde : {{ user.wallet.amount }} €</p>
     </div>
 </main>
 {% endblock %}

@@ -18,5 +18,14 @@
 }
 
 .info__card {
-   margin-right: 20px;
+    margin-right: 20px;
+}
+
+.advert__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.advert__card {
+    margin-bottom: 20px;
 }

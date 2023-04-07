@@ -10,7 +10,20 @@
 <main class="home">
     <h1>LeBonCoin</h1>
     <div class="home__adverts">
-        Aucune annonce pour le moment
+        {% if adverts|length > 0 %}
+            {% for advert in adverts %}
+                <div class="advert__card">
+                    <h3>{{ advert.title }}</h3>
+                    <p>{{ advert.price }} €</p>
+                    <a href="{{ path('advert_detail', {'id': advert.id}) }}" 
+                        class="button advert__cta">
+                        Voir le détail
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            Aucune annonce pour le moment
+        {% endif %}
     </div>
 </main>
 {% endblock %}

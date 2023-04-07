@@ -4,7 +4,7 @@
         {% if is_granted("ROLE_USER") %}
             <ul>
                 <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
-                <li><a href="">Mes Annonces</a></li>
+                <li><a href="{{ path('user_adverts') }}">Mes Annonces</a></li>
                 <li><a href="">Mes Achats</a></li>
             </ul>
         {% endif %}

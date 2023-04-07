@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home/home.css') }}">
+{% endblock %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+<main class="home">
+    <h1>LeBonCoin</h1>
+    <div class="home__advert">
+        <h3>{{ advert.title }}</h3>
+        <p>Vendu par <em>{{ advert.user.alias }}</em></p>
+        <p>{{ advert.description|nl2br }}</p>
+        <p>Prix : {{ advert.price }} €</p>
+        <a href="" 
+            class="button advert__cta">
+            Acheter
+        </a>
+    </div>
+</main>
+{% endblock %}

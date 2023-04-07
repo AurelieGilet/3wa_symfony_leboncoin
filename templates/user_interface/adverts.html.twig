@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/user_interface/user_interface.css') }}">
+{% endblock %}
+
+{% block title %}Mes annonces{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Mes annonces</h1>
+
+    {% for label, messages in app.flashes(["error", "success"]) %}
+        {% for message in messages %}
+            <span class="flash-content {{label}}-content">
+                {{message}}
+            </span>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="user__info">
+        <a href="{{ path('add_advert') }}" class="button user__cta">Ajouter une annonce</a>
+
+        {% if user.adverts|length > 0 %}
+            <div class="advert__container">
+                {% for advert in user.adverts %}
+                    <div class="advert__card">
+                        <h3>{{ advert.title}}</h3>
+                        <p>{{ advert.description|nl2br }}</p>
+                        <p>Prix : {{ advert.price }} €</p>
+                        <p>Publication :
+                            {% if advert.isVisible %}
+                                visible
+                            {% else %}
+                                invisible
+                            {% endif %}
+                        </p>
+                        <a href="{{ path('advert_visibility', {'id': advert.id}) }}" 
+                            class="button user__cta">
+                            {% if advert.isVisible %}
+                                Cacher 
+                            {% else %}
+                                Publier 
+                            {% endif %}
+                                cette annonce
+                        </a>
+                        <a href="{{ path('update_advert', {'id': advert.id}) }}" 
+                            class="button user__cta">
+                            Modifier cette annonce
+                        </a>
+                        <a href="{{ path('delete_advert', {'id': advert.id}) }}" 
+                            class="button user__cta">
+                            Supprimer cette annonce
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Vous n'avez pas encore enregistré d'annonce</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

@@ -7,24 +7,24 @@
 {% set current_path = app.request.get('_route') %}
 
 {% block title %}
-    {% if current_path is same as 'add_address' %}
+    {% if current_path is same as 'add_advert' %}
         Ajouter 
     {% else %}
         Modifier 
     {% endif %}
-        une addresse
+        une annonce
 {% endblock %}
 
 {% block body %}
 <main>
     <a href="{{ path('user_account') }}" class="link-back">Retour au compte</a>
     <h1>
-        {% if current_path is same as 'add_address' %}
+        {% if current_path is same as 'add_advert' %}
             Ajouter 
         {% else %}
             Modifier 
         {% endif %}
-            une addresse
+            une annonce
     </h1>
     <div class="form">
         {{ form(form) }}

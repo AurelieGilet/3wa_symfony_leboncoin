@@ -24,7 +24,8 @@ class UserInterfaceController extends AbstractController
         $this->em = $em;
     }
 
-    private function isRouteInsecure($object) {
+    private function isRouteInsecure($object) 
+    {
         if ($object->getUser() !== $this->getUser()) {
             $this->addFlash('error', "Vous ne pouvez pas modifier cet élément");
             return $this->redirectToRoute('user_account');
@@ -42,6 +43,20 @@ class UserInterfaceController extends AbstractController
         $user = $this->getUser();
 
         return $this->render('user_interface/account.html.twig', [
+            'controller_name' => 'UserInterfaceController',
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @return Response
+     */
+    #[Route('/compte/annonces', name: 'user_adverts')]
+    public function userAdverts(): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('user_interface/adverts.html.twig', [
             'controller_name' => 'UserInterfaceController',
             'user' => $user,
         ]);
@@ -88,14 +103,14 @@ class UserInterfaceController extends AbstractController
     #[Route('/compte/adresse/modifier/{id}', name: 'update_address')]
     public function updateAddress(Request $request, Address $address): Response
     {
-        $form = $this->createForm(AddressType::class, $address);
-        $form->handleRequest($request);
-
         $isRouteInsecure = $this->isRouteInsecure($address);
 
         if ($isRouteInsecure) {
             return $isRouteInsecure;
         }
+        
+        $form = $this->createForm(AddressType::class, $address);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($address);
@@ -121,14 +136,14 @@ class UserInterfaceController extends AbstractController
     #[Route('/compte/portefeuille/crediter/{id}', name: 'update_wallet')]
     public function updateWallet(Request $request, Wallet $wallet): Response
     {
-        $form = $this->createForm(WalletType::class, $wallet);
-        $form->handleRequest($request);
-
         $isRouteInsecure = $this->isRouteInsecure($wallet);
 
         if ($isRouteInsecure) {
             return $isRouteInsecure;
         }
+        
+        $form = $this->createForm(WalletType::class, $wallet);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $amountToCredit = $form['amountToCredit']->getData();

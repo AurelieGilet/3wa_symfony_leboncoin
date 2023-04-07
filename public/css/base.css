@@ -171,6 +171,7 @@ h3 {
 /* Button CTA */
 
 .button {
+    text-align: center;
     padding: 5px;
     border: 1px solid lightgrey;
     border-radius: 5px;

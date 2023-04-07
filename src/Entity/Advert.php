@@ -34,6 +34,9 @@ class Advert
     #[ORM\OneToMany(mappedBy: 'advert', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\OneToOne(mappedBy: 'advert', cascade: ['persist', 'remove'])]
+    private ?Purchase $purchase = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -130,6 +133,23 @@ class Advert
                 $comment->setAdvert(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPurchase(): ?Purchase
+    {
+        return $this->purchase;
+    }
+
+    public function setPurchase(Purchase $purchase): self
+    {
+        // set the owning side of the relation if necessary
+        if ($purchase->getAdvert() !== $this) {
+            $purchase->setAdvert($this);
+        }
+
+        $this->purchase = $purchase;
 
         return $this;
     }

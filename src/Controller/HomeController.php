@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(AdvertRepository $advertRepository): Response
     {
-        $adverts = $advertRepository->findAll();
+        $adverts = $advertRepository->findVisibleAdverts();
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',

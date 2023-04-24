@@ -24,7 +24,7 @@
                 {% for purchase in user.purchases %}
                     <div class="purchase__card">
                         <h3>{{ purchase.advert.title}}</h3>
-                        <p>Vendeur : {{ purchase.advert.user.name }}</p>
+                        <p>Vendeur : {{ purchase.advert.user.alias }}</p>
                         <p>Prix : {{ purchase.advert.price }} €</p>
                         <p>Adresse d'expédition : 
                             {{purchase.address.street}}, 

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 {% endblock %}
 
@@ -14,9 +15,32 @@
     <h1>
         Acheter un bien
     </h1>
-    {# TODO : dislay advert info #}
+    <div class="home__advert purchase-display">
+        <h3>{{ advert.title }}</h3>
+        <p>Vendu par <em>{{ advert.user.alias }}</em></p>
+        <p>{{ advert.description|nl2br }}</p>
+        <p>Prix : {{ advert.price }} €</p>
+    </div>
+    {% for label, messages in app.flashes(["error", "success"]) %}
+        {% for message in messages %}
+            <span class="flash-content {{label}}-content">
+                {{message}}
+            </span>
+        {% endfor %}
+    {% endfor %}
     <div class="form">
-        {{ form(form) }}
+        {{ form_start(form) }}
+            <label class="group-label">Choisir une adresse existante</label>
+            {{ form_row(form.existing_address) }}
+            <p>OU</p>
+            <label class="group-label">Enregistrer une nouvelle adresse</label>
+            {{ form_row(form.street) }}
+            {{ form_row(form.zip) }}
+            {{ form_row(form.city) }}
+
+            {{ form_row(form._token) }}
+            {{ form_row(form.submit) }}
+        {{ form_end(form, {render_rest: false}) }}
     </div>
 </main>
 {% endblock %}

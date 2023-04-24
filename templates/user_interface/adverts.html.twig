@@ -44,6 +44,10 @@
                             {% endif %}
                                 cette annonce
                         </a>
+                        <a href="{{ path('advert_detail', {'id': advert.id}) }}" 
+                            class="button user__cta">
+                            Voir cette annonce
+                        </a>
                         <a href="{{ path('update_advert', {'id': advert.id}) }}" 
                             class="button user__cta">
                             Modifier cette annonce

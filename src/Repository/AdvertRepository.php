@@ -39,6 +39,19 @@ class AdvertRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+    * @return Advert[] Returns an array of Advert objects
+    */
+    public function findVisibleAdverts(): array
+    {
+        return $this->createQueryBuilder('advert')
+            ->andWhere('advert.isVisible = :value')
+            ->setParameter('value', true)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Advert[] Returns an array of Advert objects
 //     */

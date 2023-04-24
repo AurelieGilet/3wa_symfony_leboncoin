@@ -24,9 +24,9 @@ Liste des features à créer :
 
 - ### Back office
   - [x] Créer une route back office pour l'user connecté, attention seulement lui peut y acceder.
-  - [x] Créer un formulaire pour ajouter une address
-  - [x] Créer un formulaire pour modifier une address
-  - [ ] Créer un bouton pour supprimer une address
+  - [x] Créer un formulaire pour ajouter une adresse
+  - [x] Créer un formulaire pour modifier une adresse
+  - [ ] Créer un bouton pour supprimer une adresse
   - [x] Créer un formulaire pour ajouter un amount à l'entity **Bank**
   - [x] Créer un formulaire pour ajouter une annonce
   - [x] Créer un bouton pour passer les annonces de isVisible à true ou false (toggle)
@@ -37,6 +37,6 @@ Liste des features à créer :
 
 - ### Annonces
   - [ ] En récupérant l'id d'une annonce j'affiche le detail ainsi que tous les commentaires. Je propose une formulaire qui permet de créer un commentaire si je suis connecté.
-  - [ ] L'annonce propose un bouton acheter si je suis connecté, sinon il propose un bouton se connecté.
-  - [ ] Lorsque je clique sur acheter, l'utilisateur se voit proposer une address de livraison. Si il en à pas ont le redirige pour en créer une.
-  - [ ] Quand tout est ok, l’acquisition s'enregistre en database
+  - [X] L'annonce propose un bouton acheter si je suis connecté, sinon il propose un bouton se connecté.
+  - [X] Lorsque je clique sur acheter, l'utilisateur se voit proposer une adresse de livraison. Si il n'en a pas ont le redirige pour en créer une.
+  - [X] Quand tout est ok, l’acquisition s'enregistre en database

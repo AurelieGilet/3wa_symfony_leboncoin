@@ -11,7 +11,7 @@
     </nav>
     <nav class="nav__cta">
         <ul>
-            
+            {% if is_granted("ROLE_USER") %}
                 <li><a href="{{ path('logout') }}" class="button">Déconnexion</a></li>
             {% else %}
                 <li><a href="{{ path('register') }}" class="button">Inscription</a></li>
